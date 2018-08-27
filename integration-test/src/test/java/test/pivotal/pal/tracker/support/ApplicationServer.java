@@ -23,8 +23,8 @@ public class ApplicationServer {
 
     public void start(Map<String, String> env) throws IOException, InterruptedException {
         ProcessBuilder processBuilder = new ProcessBuilder()
-            .command("java", "-jar", jarPath)
-            .inheritIO();
+                .command("java", "-jar", jarPath)
+                .inheritIO();
 
         processBuilder.environment().put("SERVER_PORT", port);
         env.forEach((key, value) -> processBuilder.environment().put(key, value));
@@ -47,7 +47,6 @@ public class ApplicationServer {
     public void stop() {
         serverProcess.destroyForcibly();
     }
-
 
     public static void waitOnPorts(String... ports) throws InterruptedException {
         for (String port : ports) waitUntilServerIsUp(port);
@@ -79,4 +78,3 @@ public class ApplicationServer {
         }
     }
 }
-
